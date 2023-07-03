@@ -2,11 +2,23 @@
 
 class DataBase:
 
-    def __init__(self, fileName):
-        pass
+    # __init__: str str str -> None
+    # Recibe el nombre del archivo, el modo de escritura y el separador que tendra.
+    def __init__(self, fileName, mode="a", separator=","):
+        assert ((type(fileName) == str) and (fileName[-4:] == ".csv"))
 
-    def push(self, data):
-        pass
+        self.__stream = open(fileName, mode)
+        self.__separator = ","
+
+    # push: str [] -> None
+    # Recibe una cadena de texto con el timestamp y una lista con todos los datos. Agrega los datos a la DB y no retorna nada.
+    def push(self, timeStamp, data):
+        assert type(timeStamp) == str
+        assert type(data) == list
+
+        self.__stream.write(timeStamp + self.__separator + self.__separator.join(data))
+
+        return
 
     def pull(self, data):
         pass

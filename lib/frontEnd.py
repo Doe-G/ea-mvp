@@ -1,4 +1,4 @@
-from message import Message
+from .message import Message
 
 # Clase FrontEnd, la cual se encarga de la visualizacion de los datos
 
