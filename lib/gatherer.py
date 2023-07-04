@@ -7,7 +7,7 @@ class Gatherer:
 
     # __init__: str, int, str -> None
     # Toma el channel como string, el bitrate como entero y la interface como string. Con esto crea un bus.
-    def __init__(self, channel, bitrate, interface="socketcan"):
+    def __init__(self, channel, bitrate=None, interface="socketcan"):
         assert type(channel) == str
         assert type(bitrate) == int
         assert type(interface) == str
@@ -21,10 +21,10 @@ class Gatherer:
 
         traslatedMessages = []
         for message in messages:
-            assert isinstance(message, Message())
+            assert isinstance(message, Message)
             translatedMessages.append(message.translateToLibrary())
 
-        can.broadcastmanager.CyclicSendTaskABC(messa)
+        can.broadcastmanager.CyclicSendTaskABC(message, period)
 
     # getData: None -> Message()
     # No recibe ningun valor y retorna el primer mensaje del bus que reciba ocupando la clase mensaje.
@@ -40,6 +40,6 @@ class Gatherer:
     # Recibe un numero indeterminado de funciones callback y ejecuta un hook con estas. No retorna nada.
     def setHook(self, *listeners):
 
-        listeners = list(map(lambda x: can.listener(x), listeners))
+        #listeners = list(map(lambda x: can.Listener(x), listeners))
 
-        can.Notifier(self.__bus, listeners)
+        can.Notifier(self.__bus, [can.Printer()])

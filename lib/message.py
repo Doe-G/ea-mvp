@@ -19,7 +19,7 @@ class Message:
                 assert type(args["timeStamp"]) == float
                 self.__timeStamp = args["timeStamp"]
             else:
-                self.__timeStamp = 0
+                self.__timeStamp = 0.0
 
             self.__arbitrationId = args["arbitrationId"]
             self.__data = args["data"]
@@ -31,15 +31,15 @@ class Message:
             self.__arbitrationId = canMessage.arbitration_id
             self.__data = canMessage.data
 
-    # getRaw: None -> (float, str)
+    # getTranslateToDatabase: None -> (float, str)
     # No recibe nada y retorna una tupla con el primer elemento el timestamp como float y como segundo elemento la informacion del mensaje con su id.
-    def getRaw(self):
+    def getTranslateToDatabase(self):
 
         return (self.__timeStamp, str(self.__arbitrationId) + "#" + self.__data.hex())
 
-    # getTranslate: None -> (str, [])
+    # getTranslateToFrontend: None -> (str, [])
     # No recibe nada y retorna una tupla con el primer elemento el timestamp formateado como string y el segundo elemento el mensaje desglozado en  una lista de valores.
-    def getTranslateToDatabase(self):
+    def getTranslateToFrontend(self):
 
         translateMessage = [str(self.__arbitrationId) + "#" + self.__data.hex()]
 

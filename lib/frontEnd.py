@@ -9,5 +9,5 @@ class FrontEnd:
 
     def update(self, message):
 
-        print(message.getRaw())
+        print(message.getTranslateToFrontend())
         return

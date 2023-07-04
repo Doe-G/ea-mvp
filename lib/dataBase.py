@@ -14,12 +14,16 @@ class DataBase:
     # push: str [] -> None
     # Recibe una cadena de texto con el timestamp y una lista con todos los datos. Agrega los datos a la DB y no retorna nada.
     def push(self, message):
-        assert isinstance(message, Message())
+        assert isinstance(message, Message)
         timeStamp, data = message.translateToDatabase()
 
         self.__stream.write(timeStamp + self.__separator + self.__separator.join(data))
 
         return
+
+    # listener:
+    # j;lkfja;lsf.
+    def listener(self):
 
     def pull(self, data):
         pass
