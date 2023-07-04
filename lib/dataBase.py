@@ -1,3 +1,4 @@
+from .message import Message
 # Clase DataBase: Se ocupa de trabajar el almacenamiento de los datos.
 
 class DataBase:
@@ -12,9 +13,9 @@ class DataBase:
 
     # push: str [] -> None
     # Recibe una cadena de texto con el timestamp y una lista con todos los datos. Agrega los datos a la DB y no retorna nada.
-    def push(self, timeStamp, data):
-        assert type(timeStamp) == str
-        assert type(data) == list
+    def push(self, message):
+        assert isinstance(message, Message())
+        timeStamp, data = message.translateToDatabase()
 
         self.__stream.write(timeStamp + self.__separator + self.__separator.join(data))
 

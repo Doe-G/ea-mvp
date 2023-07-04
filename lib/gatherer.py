@@ -36,9 +36,9 @@ class Gatherer:
 
         return message
 
-    # setHook: [func] -> None
-    # Recibe una lista de funciones callback y ejecuta un hook con estas. No retorna nada.
-    def setHook(self, listeners):
+    # setHook: *func -> None
+    # Recibe un numero indeterminado de funciones callback y ejecuta un hook con estas. No retorna nada.
+    def setHook(self, *listeners):
 
         listeners = list(map(lambda x: can.listener(x), listeners))
 

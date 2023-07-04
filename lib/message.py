@@ -5,19 +5,31 @@ from datetime import datetime
 
 class Message:
 
-    # __init__: {} -> None
-    # Recibe un diccionario de todos los valores. No retorna nada.
-    def __init__(self, **args):
-        assert type(args) == dict
-        assert (("arbitrationId" in args.values()) and (type(args["arbitrationId"]) == int))
-        assert (("data" in args.values()) and (type(args["data"]) == bytearray))
+    # __init__: can.Message() or {} -> None
+    # Recibe un diccionario o un mensaje de la clase can. No retorna nada.
+    def __init__(self, canMessage=None, **args):
 
-        if "timeStamp" in args.values():
-            assert type(args["timeStamp"]) == float
-            self.__timeStamp = args["timeStamp"]
+        # Inicializa el objeto cuando ningun mensaje de la libreria can es entregado.
+        if canMessage == None:
+            assert type(args) == dict
+            assert (("arbitrationId" in args.values()) and (type(args["arbitrationId"]) == int))
+            assert (("data" in args.values()) and (type(args["data"]) == bytearray))
 
-        self.__arbitrationId = args["arbitrationId"]
-        self.__data = args["data"]
+            if "timeStamp" in args.values():
+                assert type(args["timeStamp"]) == float
+                self.__timeStamp = args["timeStamp"]
+            else:
+                self.__timeStamp = 0
+
+            self.__arbitrationId = args["arbitrationId"]
+            self.__data = args["data"]
+
+        # Inicializa el objeto cuando el mensaje de timpo can es entregado, ignorando cualquier otro paremetro entregado.
+        else:
+            assert isinstance(canMessage, can.Message)
+            self.__timeStamp = canMessage.timestamp
+            self.__arbitrationId = canMessage.arbitration_id
+            self.__data = canMessage.data
 
     # getRaw: None -> (float, str)
     # No recibe nada y retorna una tupla con el primer elemento el timestamp como float y como segundo elemento la informacion del mensaje con su id.
