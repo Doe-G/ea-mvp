@@ -12,7 +12,7 @@ class Gatherer:
         assert type(bitrate) == int
         assert type(interface) == str
 
-        self.__bus=can.interface.Bus(channel=channel, interface=inteface, bitrate=bitrate)
+        self.__bus=can.interface.Bus(channel=channel, interface=interface, bitrate=bitrate)
 
     # sendData: Message() -> None
     # Recibe un numero flotante que representa el tiempo de envio y un numero no determinado de mensajes que se enviaran con la frecuencia determinada al bus.
