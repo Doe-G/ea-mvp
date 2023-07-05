@@ -10,17 +10,19 @@ def hookDefinition(dataBase, frontEnd):
         dataBase.push(msg)
         frontEnd.update(msg)
 
-    return hook
+    return Listener(hook)
 
-vcan0 = Gatherer("vcan0", 1000000)
-#can1 = Gatherer("can1", 500000)
-db0 = DataBase("can0.csv")
-# db1 = DataBase("can1.csv")
+vcan0 = Gatherer("vcan0")
+vcan1 = Gatherer("vcan1", 0x0cd)
+db0 = DataBase("vcan0.csv")
+db1 = DataBase("can1.csv")
 front = FrontEnd()
-
+msg1 = Message(arbitrationId=0x0c8, data=bytearray([0x1b]))
+msg2 = Message(arbitrationId=0x0c8, data=bytearray([0x1a]))
 hook0 = hookDefinition(db0, front)
 vcan0.setHook(hook0)
-#hook1 = hookDefinition(db1, front)
-#can1.setHook(hook1)
+hook1 = hookDefinition(db1, front)
+vcan1.setHook(hook1)
+vcan1.sendMessagePeriodic(0.5, msg1, msg2)
 while True:
     pass

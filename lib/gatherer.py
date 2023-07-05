@@ -7,23 +7,31 @@ class Gatherer:
 
     # __init__: str, int, str -> None
     # Toma el channel como string, el bitrate como entero y la interface como string. Con esto crea un bus.
-    def __init__(self, channel, interface="socketcan"):
+    def __init__(self, channel, *idsToFilter, **args):
         assert type(channel) == str
-        assert type(interface) == str
 
-        self.__bus=can.interface.Bus(channel=channel, interface=interface)
+        if ("interface" in list(args.keys())):
+            assert type(args["interface"]) == str
+            interface = args["interface"]
+        else:
+            interface = "socketcan"
 
-    # sendData: Message() -> None
+        filters = []
+        for idToFilter in idsToFilter:
+            assert type(idToFilter) == int
+            filters.append({"can_id": idToFilter, "can_mask": 0xFFF})
+
+        self.__bus=can.interface.Bus(channel=channel, interface=interface, can_filters=filters)
+
+    # sendMessagePeriodic: Message() -> None
     # Recibe un numero flotante que representa el tiempo de envio y un numero no determinado de mensajes que se enviaran con la frecuencia determinada al bus.
-    def sendDataPeriodic(self, period, *messages):
+    def sendMessagePeriodic(self, period, *messages):
         assert type(period) == float
 
-        traslatedMessages = []
         for message in messages:
             assert isinstance(message, Message)
-            translatedMessages.append(message.translateToLibrary())
+            self.__bus.send_periodic(message.translateToLibrary(), period)
 
-        can.broadcastmanager.CyclicSendTaskABC(message, period)
 
     # getData: None -> Message()
     # No recibe ningun valor y retorna el primer mensaje del bus que reciba ocupando la clase mensaje.
@@ -38,7 +46,7 @@ class Gatherer:
     # setHook: *func -> None
     # Recibe un numero indeterminado de funciones callback y ejecuta un hook con estas. No retorna nada.
     def setHook(self, *listeners):
+        for listener in listeners:
+            assert isinstance(listener, can.Listener)
 
-        #listeners = list(map(lambda x: can.Listener(x), listeners))
-
-        can.Notifier(self.__bus, [can.Printer()])
+        can.Notifier(self.__bus, listeners)

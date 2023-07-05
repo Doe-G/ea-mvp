@@ -17,7 +17,8 @@ class DataBase:
         assert isinstance(message, Message)
         timeStamp, data = message.translateToDatabase()
 
-        self.__stream.write(timeStamp + self.__separator + self.__separator.join(data))
+        self.__stream.write(str(timeStamp) + self.__separator + data + "\n")
+        self.__stream.flush()
 
         return
 

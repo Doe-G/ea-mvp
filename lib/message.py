@@ -12,8 +12,8 @@ class Message:
         # Inicializa el objeto cuando ningun mensaje de la libreria can es entregado.
         if canMessage == None:
             assert type(args) == dict
-            assert (("arbitrationId" in args.values()) and (type(args["arbitrationId"]) == int))
-            assert (("data" in args.values()) and (type(args["data"]) == bytearray))
+            assert (("arbitrationId" in list(args.keys())) and (type(args["arbitrationId"]) == int))
+            assert (("data" in list(args.keys())) and (type(args["data"]) == bytearray))
 
             if "timeStamp" in args.values():
                 assert type(args["timeStamp"]) == float
@@ -33,13 +33,13 @@ class Message:
 
     # getTranslateToDatabase: None -> (float, str)
     # No recibe nada y retorna una tupla con el primer elemento el timestamp como float y como segundo elemento la informacion del mensaje con su id.
-    def getTranslateToDatabase(self):
+    def translateToDatabase(self):
 
         return (self.__timeStamp, str(self.__arbitrationId) + "#" + self.__data.hex())
 
     # getTranslateToFrontend: None -> (str, [])
     # No recibe nada y retorna una tupla con el primer elemento el timestamp formateado como string y el segundo elemento el mensaje desglozado en  una lista de valores.
-    def getTranslateToFrontend(self):
+    def translateToFrontend(self):
 
         translateMessage = [str(self.__arbitrationId) + "#" + self.__data.hex()]
 
@@ -47,6 +47,6 @@ class Message:
 
     # getTranslate: None -> can.Message()
     # No recibe nada y retorna un objeto mensaje de la libreria can. 
-    def getTranslateToLibrary(self):
+    def translateToLibrary(self):
 
         return can.Message(arbitration_id=self.__arbitrationId, data= self.__data)
