@@ -9,6 +9,7 @@
 project = 'ea-mvp'
 copyright = '2023, eolian'
 author = 'eolian'
+release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
