@@ -5,8 +5,8 @@ from .message import Message
 
 class Gatherer:
 
-    # __init__: str, int, str -> None
-    # Toma el channel como string, el bitrate como entero y la interface como string. Con esto crea un bus.
+    # __init__: str, *int, **args -> None
+    # Toma el channel como string, un numero indeterminado de ids para filtrar en la red y un numero indeterminado de parametros. Con esto crea un bus.
     def __init__(self, channel, *idsToFilter, **args):
         assert type(channel) == str
 

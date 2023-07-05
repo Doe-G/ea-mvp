@@ -21,9 +21,3 @@ class DataBase:
         self.__stream.flush()
 
         return
-
-    def pull(self, data):
-        pass
-
-    def clear(self, data):
-        pass
