@@ -21,10 +21,6 @@ class DataBase:
 
         return
 
-    # listener:
-    # j;lkfja;lsf.
-    def listener(self):
-
     def pull(self, data):
         pass
 

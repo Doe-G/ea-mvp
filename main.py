@@ -1,4 +1,4 @@
-from lib import Message, DataBase, Gatherer, FrontEnd
+from lib import Message, DataBase, Gatherer, FrontEnd, Listener
 # Aquí va la logica de fucnionamiento del condigo y la ejecucion normal del mismo
 
 def hookDefinition(dataBase, frontEnd):
