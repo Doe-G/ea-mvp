@@ -1,4 +1,4 @@
-from lib import Message, DataBase, Gatherer, FrontEnd, Listener
+from eolianAPI import Message, DataBase, Gatherer, FrontEnd, Listener
 # Aquí va la logica de fucnionamiento del condigo y la ejecucion normal del mismo
 
 # hookDefinition: DataBase FrontEnd -> Listener

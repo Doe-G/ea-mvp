@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'ea-mvp'
+project = 'eolian-mvp'
 copyright = '2023, eolian'
 author = 'eolian'
 release = '0.0.1'
