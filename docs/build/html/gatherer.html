@@ -38,6 +38,82 @@
             
   <section id="gatherer">
 <h1>Gatherer<a class="headerlink" href="#gatherer" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>Clase que se encarga de la obtencion de datos desde los canales can.</p>
+<section id="metodo">
+<h2>Metodo<a class="headerlink" href="#metodo" title="Enlace permanente a este encabezado">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="eolianAPI.Gatherer">
+<span class="sig-prename descclassname"><span class="pre">eolianAPI.</span></span><span class="sig-name descname"><span class="pre">Gatherer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">idsToFilter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#eolianAPI.Gatherer" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Metodo constructor de la clase, que toma el canal, los id’s a filtrar en el canal y otros argumentos. Con esto setea un un canal bus con las confiuraciones definidas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<em>str</em>) – Obligatorio, es el nombre del canal donde se establecera el bus.</p></li>
+<li><p><strong>idsToFilter</strong> (<em>[</em><em>int</em><em>]</em>) – Opcional, es un numero indeterminado argumentos sin un nombre como identificador, estos seran los ids que filtrara el bus a la hora de leer.</p></li>
+<li><p><strong>interface</strong> (<em>str</em>) – Opcional, es la interfaz por la que se va a leer el bus. Esta es parte de los argumentos que se leen por medio de <a href="#id1"><span class="problematic" id="id2">**</span></a>args, por lo que debe ser pasada como «interface=value» en caso de ser usada. Su valor por defecto es: «socketcan».</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Este metodo retorna un objeto con todas sus configuraciones ya seteadas.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>eolianAPI.Gatherer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolianAPI.Gatherer.sendMessagePeriodic">
+<span class="sig-prename descclassname"><span class="pre">eolianAPI.Gatherer.</span></span><span class="sig-name descname"><span class="pre">sendMessagePeriodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">messages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#eolianAPI.Gatherer.sendMessagePeriodic" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Esta funcion recibe un numero que representa el tiempo y un numero indefinido de mensajes y con esto comienza a enviar esta lista de mensajes con el periodo definido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>float</em>) – </p></li>
+<li><p><strong>messages</strong> (<em>[</em><em>eolianAPI.Messages</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El metodo no retorna nada.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolianAPI.getData">
+<span class="sig-prename descclassname"><span class="pre">eolianAPI.</span></span><span class="sig-name descname"><span class="pre">getData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eolianAPI.getData" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Este metodo no toma ningun parametro y retorna el primer mensaje que se reciba el bus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Este metodo retorna la un objeto mensaje con la informacion extraida del bus.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>eolianAPI.Message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolianAPI.setHook">
+<span class="sig-prename descclassname"><span class="pre">eolianAPI.</span></span><span class="sig-name descname"><span class="pre">setHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">listeners</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#eolianAPI.setHook" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Este metodo recibe un numero indeterminado de listeners fija todos estos con un notifier, de manera que ante cada mensaje son llamados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>listener</strong> (<em>[</em><em>eolianAPI.Listener</em><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Este meotodo no retorna nada.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 
 
@@ -60,8 +136,7 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="instalaci%C3%B3n.html">Instalación</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eolianAPI.html">Documentación de eolianAPI</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="eolianAPI.html#indice-de-clases">Indice de clases</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="eolianAPI.html">Documentación de eolianAPI</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dataBase.html">DataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frontEnd.html">FrontEnd</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Gatherer</a></li>
@@ -69,11 +144,6 @@
 <li class="toctree-l2"><a class="reference internal" href="message.html">Message</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="eolianAPI.html#database">DataBase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eolianAPI.html#frontend">FrontEnd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eolianAPI.html#gatherer">Gatherer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eolianAPI.html#listener">Listener</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eolianAPI.html#message">Message</a></li>
 </ul>
 
 <div class="relations">

@@ -39,34 +39,57 @@
   <section id="documentacion-de-eolianapi">
 <h1>Documentación de eolianAPI<a class="headerlink" href="#documentacion-de-eolianapi" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><strong>lib</strong> es un conjunto de clases que ocupa el bucle principal del codigo y que permite abstraer el codigo usado, simplificando de esta manera el uso del programa, además de simplificar la identificación de errores.</p>
-</section>
-<section id="indice-de-clases">
-<h1>Indice de clases<a class="headerlink" href="#indice-de-clases" title="Enlace permanente a este encabezado">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dataBase.html">DataBase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="frontEnd.html">FrontEnd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gatherer.html">Gatherer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="listener.html">Listener</a></li>
-<li class="toctree-l1"><a class="reference internal" href="message.html">Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataBase.html">DataBase</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataBase.html#metodos">Metodos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataBase.html#eolianAPI.DataBase"><code class="docutils literal notranslate"><span class="pre">eolianAPI.DataBase()</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataBase.html#eolianAPI.DataBase.push"><code class="docutils literal notranslate"><span class="pre">eolianAPI.DataBase.push()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="frontEnd.html">FrontEnd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="frontEnd.html#metodos">Metodos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="frontEnd.html#eolianAPI.FrontEnd"><code class="docutils literal notranslate"><span class="pre">eolianAPI.FrontEnd()</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="frontEnd.html#eolianAPI.FrontEnd.update"><code class="docutils literal notranslate"><span class="pre">eolianAPI.FrontEnd.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gatherer.html">Gatherer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gatherer.html#metodo">Metodo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gatherer.html#eolianAPI.Gatherer"><code class="docutils literal notranslate"><span class="pre">eolianAPI.Gatherer()</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gatherer.html#eolianAPI.Gatherer.sendMessagePeriodic"><code class="docutils literal notranslate"><span class="pre">eolianAPI.Gatherer.sendMessagePeriodic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gatherer.html#eolianAPI.getData"><code class="docutils literal notranslate"><span class="pre">eolianAPI.getData()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="gatherer.html#eolianAPI.setHook"><code class="docutils literal notranslate"><span class="pre">eolianAPI.setHook()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="listener.html">Listener</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="listener.html#metodos">Metodos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="listener.html#eolianAPI.Listener"><code class="docutils literal notranslate"><span class="pre">eolianAPI.Listener()</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="listener.html#eolianAPI.Listener.on_message_received"><code class="docutils literal notranslate"><span class="pre">eolianAPI.Listener.on_message_received()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">Message</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="message.html#metodos">Metodos</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
-<section id="database">
-<h1>DataBase<a class="headerlink" href="#database" title="Enlace permanente a este encabezado">¶</a></h1>
-</section>
-<section id="frontend">
-<span id="id1"></span><h1>FrontEnd<a class="headerlink" href="#frontend" title="Enlace permanente a este encabezado">¶</a></h1>
-</section>
-<section id="gatherer">
-<span id="id2"></span><h1>Gatherer<a class="headerlink" href="#gatherer" title="Enlace permanente a este encabezado">¶</a></h1>
-</section>
-<section id="listener">
-<span id="id3"></span><h1>Listener<a class="headerlink" href="#listener" title="Enlace permanente a este encabezado">¶</a></h1>
-</section>
-<section id="message">
-<span id="id4"></span><h1>Message<a class="headerlink" href="#message" title="Enlace permanente a este encabezado">¶</a></h1>
-<span class="target" id="id5"></span></section>
 
 
           </div>
@@ -88,8 +111,7 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="instalaci%C3%B3n.html">Instalación</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentación de eolianAPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#indice-de-clases">Indice de clases</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentación de eolianAPI</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dataBase.html">DataBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frontEnd.html">FrontEnd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gatherer.html">Gatherer</a></li>
@@ -97,11 +119,6 @@
 <li class="toctree-l2"><a class="reference internal" href="message.html">Message</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#database">DataBase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#frontend">FrontEnd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#gatherer">Gatherer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#listener">Listener</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#message">Message</a></li>
 </ul>
 
 <div class="relations">
